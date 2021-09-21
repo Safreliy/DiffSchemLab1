@@ -95,17 +95,19 @@ main = function(){
   iter = 1
   sum = 0 #Находим ошибку
   for(i in x){
-    sum = sum + (y[iter]-Yanalit(x))
+    sum = sum + (y[iter]-Yanalit(i))^2
     iter= iter+1
   }
-  text(0,-25,paste("Error = ", sum))
+  sum = sqrt(sum/(b/h-2-1)) #Стандартное отклонение
+  
   
   plot(x,y, type="l", xlim=c(-b,b)) #Отрисовываем численное решение
   lines(x2,y2)
+  text(0,-25,paste("Error = ", sum))
   grid()
   
   x3=seq(-b,b,h)
-  Sys.sleep(5)
+  Sys.sleep(3)
   
 
   lines(x3, Yanalit(x3), col="red") #Отрисовываем аналитическое реешение
